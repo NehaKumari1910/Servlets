@@ -17,7 +17,7 @@ import com.jda.model.UserModel;
 	/**
 	 * Servlet implementation class UserController
 	 */
-	@WebServlet("/registration")
+
 	public class RegistrationController extends HttpServlet {
 		private static final long serialVersionUID = 1L;
 
@@ -27,6 +27,7 @@ import com.jda.model.UserModel;
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			response.setContentType("text/html");
 			PrintWriter out = response.getWriter();
+			System.out.print("djskfjdfd");
 			try {
 				UserModel usermodel=new UserModel();
 				usermodel.setName(request.getParameter("name"));
@@ -34,8 +35,8 @@ import com.jda.model.UserModel;
 				usermodel.setAge(Integer.parseInt(request.getParameter("age")));
 				usermodel.setUsername(request.getParameter("username"));
 				usermodel.setEmail(request.getParameter("emailaddress"));
-				usermodel.setPassword(request.getParameter("userpassword"));
-				usermodel.setPhone(request.getParameter("userpassword"));
+				usermodel.setPassword(request.getParameter("password"));
+				usermodel.setPhone(request.getParameter("phone"));
 			
 				jdbcUtill.registerUser(usermodel);
 			

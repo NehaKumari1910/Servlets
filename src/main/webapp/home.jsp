@@ -6,19 +6,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>welcome</title>
 </head>
 <body>
 <%
 String userName = "";
+response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 if(request.getSession().getAttribute("user") != null){
 	UserModel user = (UserModel) request.getSession().getAttribute("user");
     userName = user.getName();
 }
+else
+{
+	response.sendRedirect("signIn.jsp");
+}
 %>
 Welcome : <%=userName %>
+
 <form action="logout" method="post">
 <br><button type="submit" >LogOut</button>
+
 </form>
 </body>
 </html>

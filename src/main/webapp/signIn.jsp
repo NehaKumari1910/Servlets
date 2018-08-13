@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
 <h1>SignIn Portal</h1>
@@ -17,8 +17,10 @@
 <button type="submit">LogIn</button>
 <%
 String errorMsg="";
-if(request.getSession().getAttribute("error")!=null)
-	errorMsg=(String)request.getSession().getAttribute("error");
+if(request.getAttribute("error")!=null)
+{
+	errorMsg=(String)request.getAttribute("error");
+}
 %>
 <p>
 <%=errorMsg%>

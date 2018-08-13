@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jda.dao.jdbcUtill;
 import com.jda.model.UserModel;
 
-@WebServlet("/login")
+
 public class LogInController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -23,8 +23,7 @@ public class LogInController extends HttpServlet{
 			UserModel user=jdbcUtill.logInUser(request.getParameter("email"));
 			if(user.getPassword()!=null)
 			{
-				System.out.println("helll");
-				System.out.println("pas"+user.getPassword()+" "+request.getParameter("password"));
+				
 					if(user.getPassword().equals(request.getParameter("password")))
 					{
 						user.setPassword(null);
@@ -34,10 +33,9 @@ public class LogInController extends HttpServlet{
 					}
 					else
 					{
-						request.getSession().setAttribute("error", "your password is incorrect");
+						request.setAttribute("error", "your password is incorrect");
 						RequestDispatcher dispatcher = request.getRequestDispatcher("signIn.jsp");
 						dispatcher.forward(request, response);
-						request.getSession().removeAttribute("error");
 						System.out.println("password is incorrect");
 					}
 			}
@@ -46,7 +44,6 @@ public class LogInController extends HttpServlet{
 				request.getSession().setAttribute("error", "user may not exist or user or password may be incorrect.");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("signIn.jsp");
 				dispatcher.forward(request, response);
-				request.getSession().removeAttribute("error");
 			}
 		} catch (Exception e) {
 			System.out.println("error"+e);

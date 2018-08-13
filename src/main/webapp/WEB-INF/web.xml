@@ -1,7 +1,42 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <filter>  
+<filter-name>FormValidation</filter-name>  
+<filter-class>com.jda.filter.FormValidation</filter-class>  
+</filter>  
+   
+<filter-mapping>  
+<filter-name>FormValidation</filter-name>  
+<url-pattern>/registration</url-pattern>  
+</filter-mapping>  
+<servlet>  
+<servlet-name>RegistrationController</servlet-name>  
+<servlet-class>com.jda.controllers.RegistrationController</servlet-class>  
+</servlet>  
+   
+<servlet-mapping>  
+<servlet-name>RegistrationController</servlet-name>  
+<url-pattern>/registration</url-pattern>  
+</servlet-mapping>
+
+<servlet>  
+<servlet-name>LogInController</servlet-name>  
+<servlet-class>com.jda.controllers.LogInController</servlet-class>  
+</servlet>  
+   
+<servlet-mapping>  
+<servlet-name>LogInController</servlet-name>  
+<url-pattern>/login</url-pattern>  
+</servlet-mapping>
+
+<servlet>  
+<servlet-name>LogOutController</servlet-name>  
+<servlet-class>com.jda.controllers.LogOutController</servlet-class>  
+</servlet>  
+   
+<servlet-mapping>  
+<servlet-name>LogOutController</servlet-name>  
+<url-pattern>/logout</url-pattern>  
+</servlet-mapping>
+
 </web-app>
